@@ -1,4 +1,4 @@
-const mario = document.querySelector("mario");
+const mario = document.querySelector(".mario");
 const pipe = document.querySelector(".pipe");
 const nuvem = document.querySelector(".nuvem");
 const startButton = document.querySelector(".start");
@@ -50,7 +50,7 @@ const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "");
     mario.style.animation = "none";
     mario.style.left = `${marioPosition}px`;
 
-    mario.src = "game-over.png";
+    mario.src = "./img/game-over.png";
     mario.style.width = "75px";
     mario.style.marginLeft = "50px";
     audioStart.pause();
@@ -60,9 +60,9 @@ const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "");
     clearInterval(loop);
     gameOverScreen.style.display = "flex";
   } else if (pipePosition < 0 && gameStarted) {
-    updateScore();
+    updatedScore();
     pipe.style.left = '';
-  }   
+  }
 },10);
 
 document.addEventListener("keydown", jump);
