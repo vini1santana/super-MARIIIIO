@@ -1,14 +1,15 @@
-
-const mario = document.querySelector(".mario");
+const mario = document.querySelector("mario");
 const pipe = document.querySelector(".pipe");
 const nuvem = document.querySelector(".nuvem");
 const startButton = document.querySelector(".start");
 const gameOverScreen = document.querySelector(".game-over");
+const scoreElement = document.querySelector("score");
 
 audioStart = new Audio("./sound/audio_theme.mp3");
 const gameOverSound = new Audio("./sound/audio_gameover.mp3");
 
 let gameStarted = false;
+let score = 0;
 
 const startGame = () => {
   gameStarted = true;
@@ -34,6 +35,10 @@ const jump = () => {
 }
 }
 
+const updateScore = () => {
+  score += 1;
+  scoreElement.textContent = score;
+}
 const loop = setInterval (() => {
 const pipePosition = pipe.offsetLeft;
 const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "");
@@ -54,7 +59,10 @@ const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "");
 
     clearInterval(loop);
     gameOverScreen.style.display = "flex";
-  }    
+  } else if (pipePosition < 0 && gameStarted) {
+    updateScore();
+    pipe.style.left = '';
+  }   
 },10);
 
 document.addEventListener("keydown", jump);
