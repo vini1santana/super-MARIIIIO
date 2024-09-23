@@ -38,7 +38,11 @@ const jump = () => {
 const updateScore = () => {
   score += 1;
   scoreElement.textContent = score;
+  const animation = 1.5/ (1 + score/ 500);
+  pipe.style.animation = pipe-animation ${animationSpeed}s infinite linear ;
+
 }
+
 const loop = setInterval (() => {
 const pipePosition = pipe.offsetLeft;
 const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "");
